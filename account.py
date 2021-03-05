@@ -4,10 +4,7 @@ import json
 
 
 class Account():
-    def __init__(self):
-        self.balance = 0
-        self.withdraw = 0
-    
+
     def deposits(self, deposit):
         with open("accounts.json", "w") as f:
             deposit_string = {"deposit":deposit}
@@ -18,7 +15,7 @@ class Account():
             deposit = json.load(f)
         deposit["deposit"] -= withdraw
         with open("accounts.json", "w") as f:
-            json.dump(deposit, f)
+            json.dump(deposit, f, indent=4)
 
     def get_balance(self):
         with open("accounts.json", "r") as f:
