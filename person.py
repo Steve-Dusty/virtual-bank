@@ -12,7 +12,8 @@ class Person:
         self.fullname = fname + " " + lname
 
     def write_email(self):
-        pass
+        with open("accounts.json", "w") as f:
+            json.dump(self.email, f, indent=4)
 
     def write_fullname(self):
         pass
