@@ -17,6 +17,7 @@ def mainloop():
     # Create or choose an account
     accountSelect = input("=====> ")
 
+    # PART ONE
     if accountSelect == "1":
         print("Welcome to registery")
         fname = input("Input your first name: ")
@@ -30,39 +31,64 @@ def mainloop():
 
        
         password = input("Create a password: ")
+        time.sleep(1)
+        print("Confirm your information: ")
+        print(f"First name: {fname}")
+        print(f"Last name: {lname}")
+        print(f"Age: {age}")
+        print(f"Password: {password}")
+        time.sleep(1)
+        confirm = input("Is this information correct? (y/n): ").lower()
+        if confirm == "y".lower():
+            print(f"Your new bank email is: {fname + lname}@vbank.com. You will use this to login to your account.")
+
+        else: 
+            os.system('cls' if os.name == 'nt' else 'clear')
+            mainloop()
         # Create the PERSON class
         person = person.Person(fname, lname, age, password)
         print("Account created successfully successfully!")
+        time.sleep(0.5)
+        os.system('cls' if os.name == 'nt' else 'clear')
 
+        mainloop()
+
+    # PART TWO
     elif accountSelect == "2":
-        pass
+        starting()
 
+    # LAST PART
     else:
-        print("Invalid key: Choose 1 or 2 and q to exit.")
+        print("Invalid key: Choose 1 or 2")
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        mainloop()
 
 # Function to start banking.
 def starting():
     user = account.Account()
-    choices = input("Select: (1) Deposit (2) Withdraw (3) Get balance: ")
+    while True:
+        choices = input("Select: (1) Deposit (2) Withdraw (3) Get balance: ").lower()
 
-    if choices == "1": 
-        deposit = float(input("Input the amount: "))
-        user.deposits(deposit)
-        print(f"Your new balance is ${user.get_balance()}")
+        if choices == "1": 
+            deposit = float(input("Input the amount: "))
+            user.deposits(deposit)
+            print(f"Your new balance is ${user.get_balance()}")
 
-    elif choices == "2":
-        withdraw = float(input("Input the amount: "))
-        user.withdraws(withdraw)
-        print(f"Your new balance is ${user.get_balance()}")
+        elif choices == "2":
+            withdraw = float(input("Input the amount: "))
+            user.withdraws(withdraw)
+            print(f"Your new balance is ${user.get_balance()}")
 
-    elif choices == "3":
-        print(f"Your balance is ${user.get_balance()}")
-        
-
-    elif choices == "q":
-        print("You've been signed out")
-        exit()
-        
+        elif choices == "3":
+            print(f"Your balance is ${user.get_balance()}")
+                
+        elif choices == "q".lower():
+            print("Signing out...")
+            time.sleep(0.5)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            mainloop()        
 
 
 mainloop()
