@@ -40,18 +40,27 @@ def mainloop():
         time.sleep(1)
         confirm = input("Is this information correct? (y/n): ").lower()
         if confirm == "y".lower():
-            print(f"Your new bank email is: {fname + lname}@vbank.com. You will use this to login to your account.")
+            # Create the PERSON class
+            persons = person.Person(fname, lname, age, password)
+            persons.prepare_all()
+            persons.write_fname()
+            persons.write_lname()
+            persons.write_age()
+            persons.write_password()
+            print("Account created successfully successfully!")
+            time.sleep(0.5)
+            input(f"Your new bank email is: {(fname + lname).lower()}@vbank.com. You will use this to login to your bank account... Enter to continue") 
+            persons.write_fname()
+            persons.write_lname()
+            persons.write_age()
+            time.sleep(0.5)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            mainloop()
 
         else: 
             os.system('cls' if os.name == 'nt' else 'clear')
             mainloop()
-        # Create the PERSON class
-        person = person.Person(fname, lname, age, password)
-        print("Account created successfully successfully!")
-        time.sleep(0.5)
-        os.system('cls' if os.name == 'nt' else 'clear')
 
-        mainloop()
 
     # PART TWO
     elif accountSelect == "2":
