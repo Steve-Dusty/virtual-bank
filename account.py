@@ -5,11 +5,14 @@ import json
 
 class Account():
 
+
     @staticmethod
-    def deposits(deposit):
+    def deposits(deposit, email):
+        with open("accounts.json", "r") as f:
+            account = json.load(f)
+        account[email]["balance"] == deposit 
         with open("accounts.json", "w") as f:
-            deposit_string = {"deposit":deposit}
-            json.dump(deposit_string, f, indent=4)
+            json.dump(account, f, indent=4)
 
     @staticmethod
     def withdraws(withdraw):

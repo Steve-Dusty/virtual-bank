@@ -47,6 +47,7 @@ def mainloop():
             persons.write_lname()
             persons.write_age()
             persons.write_password()
+            persons.write_balance()
             print("Account created successfully successfully!")
             time.sleep(0.5)
             input(f"Your new bank email is: {(fname + lname).lower()}@vbank.com. You will use this to login to your bank account... Enter to continue") 

@@ -48,4 +48,11 @@ class Person:
         with open("accounts.json", "w") as f:
             json.dump(account, f, indent=4)
 
+    def write_balance(self):
+        with open("accounts.json", "r") as f:
+            account = json.load(f)
+        account[self.email]["balance"] = 0 
+        with open("accounts.json", "w") as f:
+            json.dump(account, f, indent=4)
+
 
