@@ -1,0 +1,14 @@
+{
+    "stevekuo@vbank.com": {
+        "first_name": "Steve",
+        "last_name": "Kuo",
+        "age": 15,
+        "password": "swifttoad78"
+    },
+    "stevkuo@vbank.com": {
+        "first_name": "Stev",
+        "last_name": "Kuo",
+        "age": 19,
+        "password": "swifttoad78"
+    }
+}

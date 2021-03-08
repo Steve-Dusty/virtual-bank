@@ -11,10 +11,14 @@ class Person:
         self.password = password
         self.email = (fname + lname + "@vbank.com").lower()
 
+
     def prepare_all(self):
+        with open("accounts.json", "r") as f:
+            account = json.load(f)
+        account[self.email] = {}
         with open("accounts.json", "w") as f:
-            prepare_string = {self.email: {}}
-            json.dump(prepare_string, f, indent=4)
+            #prepare_string = {self.email: {}}
+            json.dump(account, f, indent=4)
 
     def write_fname(self):
         with open("accounts.json", "r") as f:
@@ -43,4 +47,5 @@ class Person:
         account[self.email]["password"] = self.password
         with open("accounts.json", "w") as f:
             json.dump(account, f, indent=4)
+
 
