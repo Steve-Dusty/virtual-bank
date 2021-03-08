@@ -1,0 +1,14 @@
+version = 1
+
+test_patterns = [
+    "test/**",
+    "tests_*.py",
+    "file.json"
+]
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
