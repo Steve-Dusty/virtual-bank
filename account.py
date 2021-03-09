@@ -10,23 +10,23 @@ class Account():
     def deposits(deposit, email):
         with open("accounts.json", "r") as f:
             account = json.load(f)
-        account[email]["balance"] == deposit 
+        account[email]["balance"] += deposit 
         with open("accounts.json", "w") as f:
             json.dump(account, f, indent=4)
 
     @staticmethod
-    def withdraws(withdraw):
+    def withdraws(withdraw, email):
         with open("accounts.json", "r") as f:
             deposit = json.load(f)
-        deposit["deposit"] -= withdraw
+        deposit[email]["balance"] -= withdraw
         with open("accounts.json", "w") as f:
             json.dump(deposit, f, indent=4)
 
     @staticmethod
-    def get_balance():
+    def get_balance(email):
         with open("accounts.json", "r") as f:
             balance = json.load(f)
-            return balance["deposit"]
+            return balance[email]["balance"]
     
 
 

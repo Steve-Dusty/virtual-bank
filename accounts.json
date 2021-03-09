@@ -1,3 +1,9 @@
 {
-
+    "stevedummy@vbank.com": {
+        "first_name": "Steve",
+        "last_name": "Dummy",
+        "age": 14,
+        "password": "12345",
+        "balance": 3.333330033333336e+22
+    }
 }

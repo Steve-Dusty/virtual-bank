@@ -75,21 +75,22 @@ def mainloop():
 # Function to start banking.
 def starting():
     user = account.Account()
+    email = input("Input your email: ")
     while True:
         choices = input("Select: (1) Deposit (2) Withdraw (3) Get balance: ").lower()
 
         if choices == "1": 
             deposit = float(input("Input the amount: "))
-            user.deposits(deposit)
-            print(f"Your new balance is ${user.get_balance()}")
+            user.deposits(deposit, email)
+            print(f"Your new balance is ${user.get_balance(email)}")
 
         elif choices == "2":
             withdraw = float(input("Input the amount: "))
-            user.withdraws(withdraw)
-            print(f"Your new balance is ${user.get_balance()}")
+            user.withdraws(withdraw, email)
+            print(f"Your new balance is ${user.get_balance(email)}")
 
         elif choices == "3":
-            print(f"Your balance is ${user.get_balance()}")
+            print(f"Your balance is ${user.get_balance(email)}")
                 
         elif choices == "q".lower():
             print("Signing out...")
