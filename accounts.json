@@ -1,23 +1,2 @@
 {
-    "stevedummy@vbank.com": {
-        "first_name": "Steve",
-        "last_name": "Dummy",
-        "age": 14,
-        "password": "12345",
-        "balance": 25000.0
-    },
-    "stevekuo@vbank.com": {
-        "first_name": "Steve",
-        "last_name": "Kuo",
-        "age": 19,
-        "password": "swifttoad78",
-        "balance": 25.0
-    },
-    "stephaniekuo@vbank.com": {
-        "first_name": "Stephanie",
-        "last_name": "Kuo",
-        "age": 19,
-        "password": "swifttoad78",
-        "balance": 0
-    }
 }
