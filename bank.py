@@ -64,7 +64,7 @@ def mainloop():
     elif accountSelect == "2":
         starting()
 
-    # LAST PART
+    # LAST PART 
     else:
         print("Invalid key: Choose 1 or 2")
         time.sleep(1)
@@ -75,28 +75,55 @@ def mainloop():
 # Function to start banking.
 def starting():
     user = account.Account()
-    email = input("Input your email: ")
-    while True:
-        choices = input("Select: (1) Deposit (2) Withdraw (3) Get balance: ").lower()
+    try:
+        email = input("Input your email: ")
+        with open("accounts.json", "r") as f:
+            checker = json.load(f)
+        checker[email]
+        
+    except KeyError:
+        print("Email does not exist.")
+        time.sleep(1)
+        starting()
+    # If error does not occur.
+    else:
+        tries = 5
+        # Create while tries < 5:
+        while tries > 0:
+            password = input("Now your password: ")
+            with open("accounts.json", "r") as f:
+                checker = json.load(f)
+            if checker[email]["password"] != password:
+                tries -= 1
+                print(f"Wrong password: you have {tries} tries left.")
+                if tries == 0:
+                    print("Signing out...")
+                    time.sleep(1)
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    mainloop()
 
-        if choices == "1": 
-            deposit = float(input("Input the amount: "))
-            user.deposits(deposit, email)
-            print(f"Your new balance is ${user.get_balance(email)}")
+            elif checker[email]["password"] == password:
+                while True:
+                    choices = input("Select: (1) Deposit (2) Withdraw (3) Get balance (q) To exit: ").lower()
 
-        elif choices == "2":
-            withdraw = float(input("Input the amount: "))
-            user.withdraws(withdraw, email)
-            print(f"Your new balance is ${user.get_balance(email)}")
+                    if choices == "1": 
+                        deposit = float(input("Input the amount: "))
+                        user.deposits(deposit, email)
+                        print(f"Your new balance is ${user.get_balance(email)}")
 
-        elif choices == "3":
-            print(f"Your balance is ${user.get_balance(email)}")
-                
-        elif choices == "q".lower():
-            print("Signing out...")
-            time.sleep(0.5)
-            os.system('cls' if os.name == 'nt' else 'clear')
-            mainloop()        
+                    elif choices == "2":
+                        withdraw = float(input("Input the amount: "))
+                        user.withdraws(withdraw, email)
+                        print(f"Your new balance is ${user.get_balance(email)}")
 
+                    elif choices == "3":
+                        print(f"Your balance is ${user.get_balance(email)}")
+                                
+                    elif choices == "q".lower():
+                        print("Signing out...")
+                        time.sleep(0.5)
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        mainloop()
+        
 
 mainloop()
